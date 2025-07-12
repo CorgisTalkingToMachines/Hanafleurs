@@ -1,0 +1,20 @@
+﻿using API.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace API.Infrastructure.EFCore.EntityConfigurations
+{
+    public class UserConfiguration : IEntityTypeConfiguration<User>
+    {
+        void IEntityTypeConfiguration<User>.Configure(EntityTypeBuilder<User> builder)
+        {
+            builder
+                .HasIndex(u => u.Username)
+                .IsUnique();
+
+            builder
+                .HasIndex(u => u.Email)
+                .IsUnique(); 
+        }
+    }
+}
