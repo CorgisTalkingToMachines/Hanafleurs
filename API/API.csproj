@@ -21,7 +21,6 @@
   <ItemGroup>
     <Folder Include="Business\Services\Interfaces\" />
     <Folder Include="Business\Services\Implementations\" />
-    <Folder Include="Presentation\" />
   </ItemGroup>
 
 </Project>
