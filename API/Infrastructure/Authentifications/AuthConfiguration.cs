@@ -1,4 +1,4 @@
-﻿namespace API.Domain.Models
+﻿namespace API.Infrastructure.Authentification
 {
     public class AuthConfiguration
     {

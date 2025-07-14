@@ -1,8 +1,8 @@
 ﻿using API.Domain.Entities;
-using API.Domain.Models;
+using API.Infrastructure.Authentification;
 using Microsoft.AspNetCore.Authentication;
 
-namespace API.Infrastructure.Jwt
+namespace API.Infrastructure.Authentifications.Jwt
 {
     public static class JwtHelper
     {

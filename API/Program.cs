@@ -1,4 +1,4 @@
-using API.Domain.Models;
+using API.Infrastructure.Authentification;
 using API.Infrastructure.EFCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;

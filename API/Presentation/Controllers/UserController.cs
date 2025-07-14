@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using API.Application.Dtos.UserDtos;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Presentation.Controllers
@@ -8,7 +9,10 @@ namespace API.Presentation.Controllers
     public class UserController : ControllerBase
     {
         [HttpPost]
-        public IActionResult
+        public ActionResult<RegisterUserResponse> RegisterUser (RegisterUserRequest registerUserRequest)
+        {
+            return Ok();
+        }
 
     }
 }

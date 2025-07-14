@@ -20,9 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Business\Services\Interfaces\" />
-    <Folder Include="Business\Services\Implementations\" />
-    <Folder Include="Presentation\Dtos\UserDtos\" />
+    <Folder Include="Application\Services\Implementations\" />
+    <Folder Include="Application\Services\Interfaces\" />
+    <Folder Include="Infrastructure\Repositories\" />
   </ItemGroup>
 
 </Project>
