@@ -1,4 +1,7 @@
 ﻿using API.Application.Dtos.UserDtos;
+using API.Domain.Entities;
+using Mapster;
+using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,9 +11,17 @@ namespace API.Presentation.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private readonly IMapper _mapper;
+
+        public UserController(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
+
         [HttpPost]
         public ActionResult<RegisterUserResponse> RegisterUser (RegisterUserRequest registerUserRequest)
         {
+            User user = _mapper.Map<User>(registerUserRequest);
             return Ok();
         }
 

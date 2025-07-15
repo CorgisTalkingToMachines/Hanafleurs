@@ -1,8 +1,13 @@
+using API.Application.Mappers;
+using API.Domain.Entities;
 using API.Infrastructure.Authentification;
 using API.Infrastructure.EFCore;
+using Mapster;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,11 +41,20 @@ builder.Services
 builder.Services.Configure<AuthConfiguration>(
     builder.Configuration.GetSection("AuthConfiguration"));
 
-// Add services to the container.
+// Mapster
+builder.Services.AddMapster(); // IMapper
+TypeAdapterConfig.GlobalSettings.Apply(new UserProfile());
 
+// Others
+builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+
+
+// Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
 
 var app = builder.Build();
 
