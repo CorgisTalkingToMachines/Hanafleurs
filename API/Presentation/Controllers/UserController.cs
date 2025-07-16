@@ -22,6 +22,7 @@ namespace API.Presentation.Controllers
         public ActionResult<RegisterUserResponse> RegisterUser (RegisterUserRequest registerUserRequest)
         {
             User user = _mapper.Map<User>(registerUserRequest);
+            RegisterUserRequest request = _mapper.Map<RegisterUserRequest>(user);
             return Ok();
         }
 
