@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace API.Infrastructure.EFCore.EntityConfigurations
+namespace API.Infrastructure.Persistence.EFCore.EntityConfigurations
 {
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {

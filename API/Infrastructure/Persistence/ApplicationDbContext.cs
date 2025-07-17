@@ -1,8 +1,8 @@
 ﻿using API.Domain.Entities;
-using API.Infrastructure.EFCore.EntityConfigurations;
+using API.Infrastructure.Persistence.EFCore.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
 
-namespace API.Infrastructure.EFCore
+namespace API.Infrastructure.Persistence
 {
     public class ApplicationDbContext : DbContext
     {

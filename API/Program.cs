@@ -1,7 +1,9 @@
 using API.Application.Mappers;
 using API.Domain.Entities;
+using API.Domain.Repositories;
 using API.Infrastructure.Authentification;
-using API.Infrastructure.EFCore;
+using API.Infrastructure.Persistence;
+using API.Infrastructure.Persistence.Repositories;
 using Mapster;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -37,17 +39,17 @@ builder.Services
     };
 });
 
-// Binding
-builder.Services.Configure<AuthConfiguration>(
-    builder.Configuration.GetSection("AuthConfiguration"));
-
 // Mapster
 builder.Services.AddMapster(); // IMapper
 TypeAdapterConfig.GlobalSettings.Apply(new UserProfile());
 
 // Others
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+builder.Services.AddScoped<IUserRepository, UserRepository>(); 
 
+// Binding
+builder.Services.Configure<AuthConfiguration>(
+    builder.Configuration.GetSection("AuthConfiguration"));
 
 // Add services to the container
 builder.Services.AddControllers();
