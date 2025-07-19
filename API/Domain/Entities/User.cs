@@ -1,4 +1,6 @@
-﻿namespace API.Domain.Entities
+﻿using System.Runtime.CompilerServices;
+
+namespace API.Domain.Entities
 {
     public class User
     {
@@ -8,5 +10,12 @@
         public string PasswordHash { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
         public bool IsActive { get; set; }
+
+        private User() { }
+
+        public static User Create(string username, string email, string passwordHash)
+        {
+            
+        }
     }
 }

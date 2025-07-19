@@ -1,6 +1,9 @@
 using API.Application.Mappers;
+using API.Application.Services.Implementations;
+using API.Application.Services.Interfaces;
 using API.Domain.Entities;
 using API.Domain.Repositories;
+using API.Domain.Services;
 using API.Infrastructure.Authentification;
 using API.Infrastructure.Persistence;
 using API.Infrastructure.Persistence.Repositories;
@@ -9,7 +12,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -45,7 +47,9 @@ TypeAdapterConfig.GlobalSettings.Apply(new UserProfile());
 
 // Others
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
-builder.Services.AddScoped<IUserRepository, UserRepository>(); 
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<UserDomainService>();
 
 // Binding
 builder.Services.Configure<AuthConfiguration>(
