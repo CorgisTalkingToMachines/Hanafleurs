@@ -1,0 +1,16 @@
+Development methodology approach
+- Domain-Driven Design
+- Test Driven Design
+
+Architectural approach
+- Clean Architecture (Robert C Martin)
+
+Architectural Pattern
+- CQRS
+- Use Case
+
+Design Pattern :
+- Command
+- Result
+- Repository
+- Validation
