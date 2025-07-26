@@ -15,7 +15,7 @@ namespace API.Domain.Entities
 
         public static User Create(string username, string email, string passwordHash)
         {
-            
+            return null;
         }
     }
 }

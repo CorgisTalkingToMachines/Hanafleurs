@@ -1,5 +1,5 @@
-﻿using API.Application.Dtos.UserDtos;
-using API.Application.Services.Interfaces;
+﻿using API.Application.DataObjects.Results;
+using API.Application.Dtos.UserDtos;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,15 +10,12 @@ namespace API.Presentation.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUserService _userService;
-
-        public UserController(IUserService userService)
+        public UserController()
         {
-            _userService = userService;
         }
 
         [HttpPost]
-        public ActionResult<RegisterUserResponse> RegisterUser (RegisterUserRequest registerUserRequest)
+        public ActionResult<RegisterUserResult> RegisterUser (RegisterUserCommand registerUserRequest)
         {
             return Ok();
         }

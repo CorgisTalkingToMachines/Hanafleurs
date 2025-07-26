@@ -1,14 +1,14 @@
 ﻿using API.Domain.Entities;
-using API.Domain.Repositories;
+using API.Domain.Repositories.Users;
 using Microsoft.EntityFrameworkCore;
 
-namespace API.Infrastructure.Persistence.Repositories
+namespace API.Infrastructure.Persistence.Repositories.WriteRepositories
 {
-    public class UserRepository : IUserRepository
+    public class WriteUserRepository : IWriteUserRepository, IReadUserRepository
     {
         private readonly ApplicationDbContext _context;
 
-        public UserRepository(ApplicationDbContext context)
+        public WriteUserRepository(ApplicationDbContext context)
         {
             _context = context;
         }

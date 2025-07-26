@@ -14,7 +14,7 @@ namespace API.Application.Mappers
         public void Register(TypeAdapterConfig configuration)
         {
             configuration
-                .NewConfig<RegisterUserRequest, User>()
+                .NewConfig<RegisterUserCommand, User>()
                 .Map(destination => destination.PasswordHash, source => source.Password)
                 .TwoWays()
                 .Map(source => source.PasswordHash, destination => destination.Password);

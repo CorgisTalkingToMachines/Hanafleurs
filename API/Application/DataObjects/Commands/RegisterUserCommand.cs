@@ -1,6 +1,6 @@
 ﻿namespace API.Application.Dtos.UserDtos
 {
-    public class RegisterUserRequest
+    public class RegisterUserCommand
     {
         public string Username { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
