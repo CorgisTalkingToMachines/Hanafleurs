@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Infrastructure.Persistence.Repositories.ReadRepositories
 {
-    public class ReadUserRepository : IWriteUserRepository, IReadUserRepository
+    public class ReadUserRepository : IReadUserRepository
     {
         private readonly ApplicationDbContext _context;
 
@@ -13,7 +13,7 @@ namespace API.Infrastructure.Persistence.Repositories.ReadRepositories
             _context = context;
         }
 
-        public Task DeleteAsync(User user)
+        public Task<User> FindByEmailAsync(string email)
         {
             throw new NotImplementedException();
         }
@@ -25,9 +25,9 @@ namespace API.Infrastructure.Persistence.Repositories.ReadRepositories
                 .SingleAsync();
         }
 
-        public async Task SaveAsync(User user)
+        public Task<User> FindByUsernameAsync(string username)
         {
-            await _context.Users.AddAsync(user);
+            throw new NotImplementedException();
         }
     }
 }

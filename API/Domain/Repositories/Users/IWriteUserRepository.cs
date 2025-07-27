@@ -6,6 +6,5 @@ namespace API.Domain.Repositories.Users
     {
         Task SaveAsync(User user);
         Task DeleteAsync(User user);
-        Task<User> FindByIdAsync(int id);
     }
 }

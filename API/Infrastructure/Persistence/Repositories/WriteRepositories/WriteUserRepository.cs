@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Infrastructure.Persistence.Repositories.WriteRepositories
 {
-    public class WriteUserRepository : IWriteUserRepository, IReadUserRepository
+    public class WriteUserRepository : IWriteUserRepository
     {
         private readonly ApplicationDbContext _context;
 
@@ -16,13 +16,6 @@ namespace API.Infrastructure.Persistence.Repositories.WriteRepositories
         public Task DeleteAsync(User user)
         {
             throw new NotImplementedException();
-        }
-
-        public async Task<User> FindByIdAsync(int id)
-        {
-            return await _context.Users
-                .Where(user => user.Id == id)
-                .SingleAsync();
         }
 
         public async Task SaveAsync(User user)
