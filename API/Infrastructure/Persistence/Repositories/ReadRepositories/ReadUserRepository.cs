@@ -13,21 +13,25 @@ namespace API.Infrastructure.Persistence.Repositories.ReadRepositories
             _context = context;
         }
 
-        public Task<User> FindByEmailAsync(string email)
+        public async Task<User?> FindByEmailAsync(string email)
         {
-            throw new NotImplementedException();
+            return await _context.Users
+                .Where(user => user.Email == email)
+                .FirstOrDefaultAsync();
         }
 
-        public async Task<User> FindByIdAsync(int id)
+        public async Task<User> FindByIdAsync(Guid id)
         {
             return await _context.Users
                 .Where(user => user.Id == id)
                 .SingleAsync();
         }
 
-        public Task<User> FindByUsernameAsync(string username)
+        public async Task<User?> FindByUsernameAsync(string username)
         {
-            throw new NotImplementedException();
+            return await _context.Users
+                .Where(user => user.Username == username)
+                .FirstOrDefaultAsync();
         }
     }
 }

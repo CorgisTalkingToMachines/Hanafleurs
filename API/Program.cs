@@ -1,4 +1,5 @@
 using API.Application.Mappers;
+using API.Application.UseCases.Users;
 using API.Domain.Entities;
 using API.Domain.Repositories.Users;
 using API.Domain.Services;
@@ -6,6 +7,7 @@ using API.Infrastructure.Authentification;
 using API.Infrastructure.Persistence;
 using API.Infrastructure.Persistence.Repositories.ReadRepositories;
 using API.Infrastructure.Persistence.Repositories.WriteRepositories;
+using API.Infrastructure.Services;
 using Mapster;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -45,10 +47,12 @@ builder.Services.AddMapster(); // IMapper
 TypeAdapterConfig.GlobalSettings.Apply(new UserProfile());
 
 // Others
+builder.Services.AddScoped<IPasswordHashingService, PasswordHashingService>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<IWriteUserRepository, WriteUserRepository>();
 builder.Services.AddScoped<IReadUserRepository, ReadUserRepository>();
 builder.Services.AddScoped<UserDomainService>();
+builder.Services.AddScoped<RegisterUserUseCase>();
 
 // Binding
 builder.Services.Configure<AuthConfiguration>(

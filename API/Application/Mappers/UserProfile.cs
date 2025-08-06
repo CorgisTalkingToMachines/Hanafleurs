@@ -15,9 +15,7 @@ namespace API.Application.Mappers
         {
             configuration
                 .NewConfig<RegisterUserCommand, User>()
-                .Map(destination => destination.PasswordHash, source => source.Password)
-                .TwoWays()
-                .Map(source => source.PasswordHash, destination => destination.Password);
+                .ConstructUsing(src => User.Create(src.Username, src.Email, src.Password));
         }
     }
 }

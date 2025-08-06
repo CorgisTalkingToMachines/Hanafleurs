@@ -4,7 +4,7 @@ namespace API.Domain.Repositories.Users
 {
     public interface IWriteUserRepository
     {
-        Task SaveAsync(User user);
+        Task<User> SaveAsync(User user);
         Task DeleteAsync(User user);
     }
 }

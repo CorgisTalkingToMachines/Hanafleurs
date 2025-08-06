@@ -4,8 +4,8 @@ namespace API.Domain.Repositories.Users
 {
     public interface IReadUserRepository
     {
-        Task<User> FindByIdAsync(int id);
-        Task<User> FindByEmailAsync(string email);
-        Task<User> FindByUsernameAsync(string username);
+        Task<User> FindByIdAsync(Guid id);
+        Task<User?> FindByEmailAsync(string email);
+        Task<User?> FindByUsernameAsync(string username);
     }
 }
