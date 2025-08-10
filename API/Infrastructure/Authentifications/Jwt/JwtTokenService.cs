@@ -37,7 +37,7 @@ namespace API.Infrastructure.Authentifications.Jwt
             try
             {
                 // Debug : analyser le token avant validation
-                // JsonWebTokenHandler
+                // JsonWebTokenHandler instead of JwtSecurityTokenHandler to handle read and write jwt for single Audience instead of Audiences ? ToDo
                 var handler = new JwtSecurityTokenHandler();
                 var jwtToken = handler.ReadJwtToken(token);
 

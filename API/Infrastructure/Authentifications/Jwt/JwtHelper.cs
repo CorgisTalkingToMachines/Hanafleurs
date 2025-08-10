@@ -31,7 +31,7 @@ namespace API.Infrastructure.Authentifications.Jwt
                         new SymmetricSecurityKey(key),
                         SecurityAlgorithms.HmacSha256Signature),
                     Issuer = authConfiguration.Issuer,
-                    //Audience = authConfiguration.Audience
+                    Audience = authConfiguration.Audience
                 };
 
                 var token = tokenHandler.CreateToken(tokenDescriptor);
