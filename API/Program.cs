@@ -4,6 +4,7 @@ using API.Domain.Entities;
 using API.Domain.Repositories.Users;
 using API.Domain.Services;
 using API.Infrastructure.Authentification;
+using API.Infrastructure.Authentifications.Jwt;
 using API.Infrastructure.Persistence;
 using API.Infrastructure.Persistence.Repositories.ReadRepositories;
 using API.Infrastructure.Persistence.Repositories.WriteRepositories;
@@ -53,6 +54,9 @@ builder.Services.AddScoped<IWriteUserRepository, WriteUserRepository>();
 builder.Services.AddScoped<IReadUserRepository, ReadUserRepository>();
 builder.Services.AddScoped<UserDomainService>();
 builder.Services.AddScoped<RegisterUserUseCase>();
+builder.Services.AddScoped<LoginUserUseCase>();
+builder.Services.AddScoped<ITokenService, JwtTokenService>();
+//builder.Services.AddScoped<>
 
 // Binding
 builder.Services.Configure<AuthConfiguration>(

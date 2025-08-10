@@ -1,16 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace API.Application.DataObjects.Commands
+namespace API.Application.DataObjects.Queries
 {
-    public class RegisterUserCommand
+    public class LoginUserQuery
     {
         [Required]
         [StringLength(25), MinLength(3)]
         public string Username { get; init; } = string.Empty;
-
-        [Required]
-        [EmailAddress]
-        public string Email { get; init; } = string.Empty;
 
         [Required]
         [StringLength(50), MinLength(4)]
