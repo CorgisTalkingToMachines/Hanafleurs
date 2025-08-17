@@ -7,8 +7,8 @@ namespace API.Domain.Services
     {
         string GenerateToken(User user);
 
-        bool ValidateToken(string token);
+        Task<bool> ValidateTokenAsync(string token);
 
-        ClaimsPrincipal GetPrincipalFromToken(string token);
+        Task<ClaimsPrincipal?> GetPrincipalFromTokenAsync(string token);
     }
 }

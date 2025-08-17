@@ -43,10 +43,10 @@ namespace API.Presentation.Controllers
             if (isValidPassword)
             {
                 var token = _tokenService.GenerateToken(user);
-                var booleanTokenShouldSucceed = _tokenService.ValidateToken(token);
+                var booleanTokenShouldSucceed = _tokenService.ValidateTokenAsync(token);
 
                 var tokenShouldFail = token + "e";
-                var booleanTokenShouldFail = _tokenService.ValidateToken(token);
+                var booleanTokenShouldFail = _tokenService.ValidateTokenAsync(tokenShouldFail);
                 return null;
             }
 
