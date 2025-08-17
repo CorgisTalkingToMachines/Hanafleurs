@@ -55,7 +55,6 @@ namespace API.Infrastructure.Authentifications.Jwt
             {
                 return null;
             }
-
         }
 
         public async Task<bool> ValidateTokenAsync(string token)
