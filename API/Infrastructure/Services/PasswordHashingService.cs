@@ -18,9 +18,9 @@ namespace API.Infrastructure.Services
             return _passwordHasher.HashPassword(null, password);
         }
 
-        public bool VerifyPassword(string password, string hashedPassword)
+        public bool VerifyCorrespondingPasswordWithStoredHashedPassword(string inputPassword, string userHashedPassword)
         {
-            var result = _passwordHasher.VerifyHashedPassword(null, hashedPassword, password);
+            var result = _passwordHasher.VerifyHashedPassword(null, userHashedPassword, inputPassword);
             return result == PasswordVerificationResult.Success;
         }
     }
