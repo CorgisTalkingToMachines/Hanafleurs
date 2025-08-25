@@ -22,16 +22,15 @@ namespace API.Presentation.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<RegisterUserResult>> RegisterUser (RegisterUserCommand registerUserCommand)
         {
-            await _registerUserUseCase.ExecuteAsync(registerUserCommand);
-            return Ok();
+            var result = await _registerUserUseCase.ExecuteAsync(registerUserCommand);
+            return result.ToActionResult(this);
         }
 
         [HttpPost("login")]
         public async Task<ActionResult> LoginUser(LoginUserQuery loginUserQuery)
         {
             var result = await _loginUserUseCase.ExecuteAsync(loginUserQuery);
-            return Ok(result);
-
+            return result.ToActionResult(this);
         }
 
     }

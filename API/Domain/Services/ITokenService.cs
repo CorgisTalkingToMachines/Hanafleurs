@@ -5,10 +5,10 @@ namespace API.Domain.Services
 {
     public interface ITokenService
     {
-        string GenerateToken(User user);
+        public string GenerateToken(User user);
 
-        Task<bool> ValidateTokenAsync(string token);
+        public Task<bool> ValidateTokenAsync(string token);
 
-        Task<ClaimsPrincipal?> GetPrincipalFromTokenAsync(string token);
+        public Task<ClaimsPrincipal?> GetPrincipalFromTokenAsync(string token);
     }
 }

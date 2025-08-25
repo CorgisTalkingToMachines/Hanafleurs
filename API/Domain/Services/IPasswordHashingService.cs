@@ -2,7 +2,7 @@
 {
     public interface IPasswordHashingService
     {
-        string HashPassword(string password);
-        bool VerifyCorrespondingPasswordWithStoredHashedPassword(string password, string hashedPassword);
+        public string HashPassword(string password);
+        public bool VerifyCorrespondingPasswordWithStoredHashedPassword(string password, string hashedPassword);
     }
 }
