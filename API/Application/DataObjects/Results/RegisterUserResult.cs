@@ -4,9 +4,7 @@
     {
         public bool IsSuccess { get; set; }
         public string Message { get; set; } = string.Empty;
-
         public Guid Data {  get; set; }
-
         public ErrorType ErrorType { get; set; } = ErrorType.None;
 
         public static RegisterUserResult Success(Guid id) => new()
