@@ -1,7 +1,7 @@
-﻿using API.Application.Dtos.UserDtos;
-using API.Application.Services.Interfaces;
-using MapsterMapper;
-using Microsoft.AspNetCore.Http;
+﻿using API.Application.DataObjects.Commands;
+using API.Application.DataObjects.Queries;
+using API.Application.DataObjects.Results;
+using API.Application.UseCases.Users;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Presentation.Controllers
@@ -10,17 +10,27 @@ namespace API.Presentation.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUserService _userService;
+        private readonly RegisterUserUseCase _registerUserUseCase;
+        private readonly LoginUserUseCase _loginUserUseCase;
 
-        public UserController(IUserService userService)
+        public UserController(RegisterUserUseCase registerUserUseCase, LoginUserUseCase loginUserUseCase)
         {
-            _userService = userService;
+            _registerUserUseCase = registerUserUseCase;
+            _loginUserUseCase = loginUserUseCase;
         }
 
-        [HttpPost]
-        public ActionResult<RegisterUserResponse> RegisterUser (RegisterUserRequest registerUserRequest)
+        [HttpPost("register")]
+        public async Task<ActionResult<RegisterUserResult>> RegisterUser (RegisterUserCommand registerUserCommand)
         {
-            return Ok();
+            var result = await _registerUserUseCase.ExecuteAsync(registerUserCommand);
+            return result.ToActionResult(this);
+        }
+
+        [HttpPost("login")]
+        public async Task<ActionResult> LoginUser(LoginUserQuery loginUserQuery)
+        {
+            var result = await _loginUserUseCase.ExecuteAsync(loginUserQuery);
+            return result.ToActionResult(this);
         }
 
     }

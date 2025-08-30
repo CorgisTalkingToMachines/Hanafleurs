@@ -1,12 +1,14 @@
 using API.Application.Mappers;
-using API.Application.Services.Implementations;
-using API.Application.Services.Interfaces;
+using API.Application.UseCases.Users;
 using API.Domain.Entities;
-using API.Domain.Repositories;
+using API.Domain.Repositories.Users;
 using API.Domain.Services;
 using API.Infrastructure.Authentification;
+using API.Infrastructure.Authentifications.Jwt;
 using API.Infrastructure.Persistence;
-using API.Infrastructure.Persistence.Repositories;
+using API.Infrastructure.Persistence.Repositories.ReadRepositories;
+using API.Infrastructure.Persistence.Repositories.WriteRepositories;
+using API.Infrastructure.Services;
 using Mapster;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -46,10 +48,15 @@ builder.Services.AddMapster(); // IMapper
 TypeAdapterConfig.GlobalSettings.Apply(new UserProfile());
 
 // Others
+builder.Services.AddScoped<IPasswordHashingService, PasswordHashingService>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IWriteUserRepository, WriteUserRepository>();
+builder.Services.AddScoped<IReadUserRepository, ReadUserRepository>();
 builder.Services.AddScoped<UserDomainService>();
+builder.Services.AddScoped<RegisterUserUseCase>();
+builder.Services.AddScoped<LoginUserUseCase>();
+builder.Services.AddScoped<ITokenService, JwtTokenService>();
+//builder.Services.AddScoped<>
 
 // Binding
 builder.Services.Configure<AuthConfiguration>(
