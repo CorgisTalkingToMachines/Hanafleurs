@@ -1,4 +1,6 @@
-﻿using System;
+﻿using API.Application.AdminCases;
+using API.Application.DataObjects.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,10 +14,10 @@ namespace ApiTest.UseCases.Users
 
 
         [Fact]
-        public void ExecuteAsync_WithValidCommand_ShouldReturnSuccess()
+        public async void ExecuteAsync_WithValidCommand_ShouldReturnSuccess()
         {
             // Arrange
-            var command = new CreateProductCommand("ProductName", "Description", "Price", "Season", "UsageContexte", "FlowerType", "FlowerCareAdvice");
+            var command = new CreateProductCommand("ProductName", "Description", 10, "Season", "UsageContexte", "FlowerType", "FlowerCareAdvice");
 
             // Act
             var result = await _adminCase.ExecuteAsync(command);
