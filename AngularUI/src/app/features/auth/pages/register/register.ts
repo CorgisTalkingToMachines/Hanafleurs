@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { Auth } from '@features/auth/services/auth';
+//import { Auth } from 'C:\Users\ta_gu\Git\Hanafleurs\AngularUI\src\app\features\auth\services\auth';
 
 @Component({
   selector: 'hf-register',
