@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Auth } from '@features/auth/services/auth';
-//import { Auth } from 'C:\Users\ta_gu\Git\Hanafleurs\AngularUI\src\app\features\auth\services\auth';
 
 @Component({
   selector: 'hf-register',
@@ -11,12 +10,23 @@ import { Auth } from '@features/auth/services/auth';
 })
 export class Register {
   user = {
-    name: '',
+    username: '',
     email: '',
     password: ''
   };
 
-  onSubmit(form: NgForm): void {
+  constructor(private authService: Auth) {}
 
+  onSubmit(form: NgForm): void {
+    if (form.invalid) return;
+
+    this.authService.register(this.user).subscribe({
+      next: (response) => {
+        console.log('Inscription réussie', response);
+      },
+      error: (err) => {
+        console.error('Erreur lors de l\'inscription', err);
+      }
+    });
   }
 }

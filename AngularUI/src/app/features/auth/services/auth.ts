@@ -10,7 +10,7 @@ export class Auth {
 
   constructor(private http: HttpClient) {} // Current service demands an instance of HttpClient
 
-  register(user: { name: string; email: string; password: string }): Observable<any> {
+  register(user: { username: string; email: string; password: string }): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, user);
   }
 }
