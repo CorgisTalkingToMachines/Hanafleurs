@@ -1,11 +1,24 @@
 import { Component } from '@angular/core';
+import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { Auth } from '@features/auth/services/auth';
 
 @Component({
   selector: 'hf-login',
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
 export class Login {
+  constructor(private authService: Auth) {};
 
+  loginForm = new FormGroup({
+    username: new FormControl('', { nonNullable: true }),
+    password: new FormControl('', { nonNullable: true })
+  });
+
+  onSubmit(): void{
+    if (this.loginForm.invalid) return;
+
+    this.authService.login(this.loginForm.getRawValue()).subscribe
+  }
 }
