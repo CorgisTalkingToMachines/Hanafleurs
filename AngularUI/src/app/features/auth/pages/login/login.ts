@@ -19,6 +19,13 @@ export class Login {
   onSubmit(): void{
     if (this.loginForm.invalid) return;
 
-    this.authService.login(this.loginForm.getRawValue()).subscribe
+    this.authService.login(this.loginForm.getRawValue()).subscribe({
+      next: (response) => {
+        console.log('Connexion réussie', response);
+      },
+      error: (err) => {
+        console.log('Échec de la connexion', err);
+      }
+    })
   }
 }
