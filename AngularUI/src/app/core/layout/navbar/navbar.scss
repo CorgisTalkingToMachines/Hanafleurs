@@ -1,8 +1,32 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+  border-bottom: 2px solid #ccc;
+  align-items: center;
+}
+
 .nav-links {
   display: flex;
   gap: 16px;
   list-style: none;
-  padding: 10px;
-  margin: 0;
-  border-bottom: 2px solid #ccc;
+}
+
+.nav-icon-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  border: 2px solid #000;
+  border-radius: 20%;
+  color: #000;
+  background-color: #ccc;
+}
+
+.title {
+  display: flex;
+  font-style: bold;
+  font-size: 24px;
+  text-decoration: none;
 }
