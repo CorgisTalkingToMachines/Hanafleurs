@@ -1,0 +1,24 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.separator::before {
+  display: flex;
+  flex: 1;
+  border-bottom: 1px solid;
+  content: "";
+}
+
+.separator::after {
+  display: flex;
+  flex: 1;
+  border-bottom: 1px solid;
+  content: "";
+}

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Auth } from '@features/auth/services/auth';
+import { Separator } from "app/shared/separator/separator";
 
 @Component({
   selector: 'hf-register',
-  imports: [FormsModule],
+  imports: [FormsModule, Separator],
   templateUrl: './register.html',
   styleUrl: './register.scss',
 })

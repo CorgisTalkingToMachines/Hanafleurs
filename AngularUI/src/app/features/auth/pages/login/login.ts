@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Auth } from '@features/auth/services/auth';
+import { Separator } from "app/shared/separator/separator";
 
 @Component({
   selector: 'hf-login',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink, Separator],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })

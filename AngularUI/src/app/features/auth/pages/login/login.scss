@@ -1,18 +1,38 @@
-.form {
+label, button {
+  font-weight: bold;
+}
+
+.login-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px 0px;
-  gap: 20px;
+  max-width: 350px;
+  margin: 10px auto;
+  gap: 16px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
 }
 
 .form__field {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.25rem;
+  width: 100%;
 }
 
-.form__input {
+.form__button {
+  width: 100%;
+  background-color: #52c654;
+}
 
+.form__interactive {
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
 }
