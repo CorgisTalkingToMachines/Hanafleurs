@@ -6,6 +6,16 @@
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #72e974ca;
+  --color-secondary: #72e974ca;
+  --color-accent: #72e974ca;
+}
+
 html {
   height: 100%;
   @include mat.theme((
@@ -35,4 +45,5 @@ body {
   margin: 0;
   height: 100%;
 }
+
 /* You can add global styles to this file, and also import other style files */
