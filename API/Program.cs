@@ -23,25 +23,32 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql
 
 // Authentification configuration
 builder.Services
-.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options => // middleware JWT authentication
-{
-    options.TokenValidationParameters = new TokenValidationParameters
+    .AddAuthentication(options =>
     {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = builder.Configuration["AuthConfiguration:Issuer"],
-        ValidAudience = builder.Configuration["AuthConfiguration:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["AuthConfiguration:Key"]
-            ?? throw new InvalidOperationException("JWT key not configured")))
-    };
-});
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options => // middleware JWT authentication
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["AuthConfiguration:Issuer"],
+            ValidAudience = builder.Configuration["AuthConfiguration:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["AuthConfiguration:Key"]
+                ?? throw new InvalidOperationException("JWT key not configured")))
+        };
+    })
+    .AddCookie("ExternalCookie")
+    .AddGoogle(options =>
+    {
+        options.ClientId = builder.Configuration["OAuth:ClientId"]!;
+        options.ClientSecret = builder.Configuration["OAuth:ClientSecret"]!;
+        options.SignInScheme = "ExternalCookie";
+    });
 
 // Mapster
 builder.Services.AddMapster(); // IMapper
@@ -55,6 +62,7 @@ builder.Services.AddScoped<IReadUserRepository, ReadUserRepository>();
 builder.Services.AddScoped<UserDomainService>();
 builder.Services.AddScoped<RegisterUserUseCase>();
 builder.Services.AddScoped<LoginUserUseCase>();
+builder.Services.AddScoped<GoogleLoginUseCase>();
 builder.Services.AddScoped<ITokenService, JwtTokenService>();
 //builder.Services.AddScoped<>
 

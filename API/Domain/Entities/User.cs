@@ -7,7 +7,9 @@ namespace API.Domain.Entities
         public Guid Id { get; set; }
         public string Username { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
-        public string PasswordHash { get; set; } = string.Empty;
+        public string? PasswordHash { get; set; };
+        public string? ExternalProvider  { get; set; }
+        public string? ExternalProviderId { get; set; }
         public DateTime CreatedAt { get; set; }
         public bool IsActive { get; set; }
 
@@ -21,6 +23,22 @@ namespace API.Domain.Entities
                 Username = username,
                 Email = email,
                 PasswordHash = passwordHash,
+                CreatedAt = DateTime.UtcNow,
+                IsActive = true
+            };
+        }
+
+        public static User CreateFromExternalProvider(string username, string email, string provider,
+            string providerId)
+        {
+            return new User
+            {
+                Id = Guid.NewGuid(),
+                Username = username,
+                Email = email,
+                PasswordHash = null,
+                ExternalProvider = provider,
+                ExternalProviderId = providerId,
                 CreatedAt = DateTime.UtcNow,
                 IsActive = true
             };

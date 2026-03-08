@@ -15,5 +15,10 @@
     "Key": "secretKey",
     "Issuer": "Issuer",
     "Audience": "Audience"
+  },
+  
+  "OAuth": {
+    "ClientID": "clientID",
+    "ClientSecret": "clientSecret"
   }
 }

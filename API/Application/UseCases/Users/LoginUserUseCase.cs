@@ -25,6 +25,11 @@ namespace API.Application.UseCases.Users
                 return LoginUserResult.UserNotFound();
             }
 
+            if (user.PasswordHash == null)
+            {
+                return LoginUserResult.WrongPassword();
+            }
+
             bool isPasswordValid = _passwordHashingService.VerifyCorrespondingPasswordWithStoredHashedPassword(query.Password, user.PasswordHash);
             if (!isPasswordValid)
             {
@@ -32,7 +37,6 @@ namespace API.Application.UseCases.Users
             }
 
             string generatedToken = _tokenService.GenerateToken(user);
-
             return LoginUserResult.Success(generatedToken);
         }
     }
