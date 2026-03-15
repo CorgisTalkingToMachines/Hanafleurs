@@ -47,7 +47,7 @@ builder.Services
     {
         options.ClientId = builder.Configuration["OAuth:ClientId"]!;
         options.ClientSecret = builder.Configuration["OAuth:ClientSecret"]!;
-        options.SignInScheme = "ExternalCookie";
+        options.SignInScheme = "ExternalCookie"; // Tells Google's Handler, once the OAuth authentication succeeded, Google's claims must be stored in this cookie
     });
 
 // Mapster
