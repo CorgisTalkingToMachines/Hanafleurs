@@ -75,7 +75,7 @@ namespace API.Presentation.Controllers
                 return Redirect("http://localhost:4200/auth/login?error=google-login-failed");
             }
 
-            return Redirect($"http://localhost:4200/auth/callback?token={googleLoginResult.Data}");
+            return Redirect($"http://localhost:4200/callback?token={googleLoginResult.Data}");
         }
         
     }

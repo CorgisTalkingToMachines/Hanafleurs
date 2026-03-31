@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { Auth } from '@features/auth/services/auth';
 import { Separator } from "app/shared/separator/separator";
 
@@ -29,5 +29,22 @@ export class Login {
         console.log('Échec de la connexion', err);
       }
     })
+  }
+
+  loginWithGoogle(): void {
+    window.addEventListener('message', (event) => {
+      if (event.origin !== 'http://localhost:4200') return;
+
+      const token = event.data.token;
+      if (token) {
+        // stockage du token
+      }
+    })
+
+    const popup = window.open(
+      'http://localhost:5148/api/User/google-login',
+      'google-auth',
+      'width=500,height=600'
+    );
   }
 }

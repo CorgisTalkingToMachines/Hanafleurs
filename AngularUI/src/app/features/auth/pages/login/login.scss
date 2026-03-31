@@ -2,13 +2,17 @@ label, button {
   font-weight: bold;
 }
 
+button {
+  height: 2rem;
+  background-color: var(--color-primary);
+}
+
 .login-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  max-width: 350px;
   margin: 10px auto;
-  gap: 16px;
+  max-width: 600px;
+  gap: 1rem;
 }
 
 .form {
