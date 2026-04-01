@@ -32,19 +32,6 @@ export class Login {
   }
 
   loginWithGoogle(): void {
-    window.addEventListener('message', (event) => {
-      if (event.origin !== 'http://localhost:4200') return;
-
-      const token = event.data.token;
-      if (token) {
-        // stockage du token
-      }
-    })
-
-    const popup = window.open(
-      'http://localhost:5148/api/User/google-login',
-      'google-auth',
-      'width=500,height=600'
-    );
+    window.location.href = 'http://localhost:5148/api/User/google-login';
   }
 }
