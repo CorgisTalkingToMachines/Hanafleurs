@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using API.Domain.ValueObjects;
 
 namespace API.Domain.Entities
 {
@@ -13,6 +14,8 @@ namespace API.Domain.Entities
         public DateTime CreatedAt { get; set; }
         public bool IsActive { get; set; }
 
+        public Role Role { get; set; }
+
         private User() { }
 
         public static User Create(string username, string email, string passwordHash)
@@ -23,8 +26,9 @@ namespace API.Domain.Entities
                 Username = username,
                 Email = email,
                 PasswordHash = passwordHash,
+                Role = Role.Customer,
                 CreatedAt = DateTime.UtcNow,
-                IsActive = true
+                IsActive = true,
             };
         }
 
@@ -37,6 +41,7 @@ namespace API.Domain.Entities
                 Username = username,
                 Email = email,
                 PasswordHash = null,
+                Role = Role.Customer,
                 ExternalProvider = provider,
                 ExternalProviderId = providerId,
                 CreatedAt = DateTime.UtcNow,
