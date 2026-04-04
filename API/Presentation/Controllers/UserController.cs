@@ -4,6 +4,7 @@ using API.Application.DataObjects.Queries;
 using API.Application.DataObjects.Results;
 using API.Application.UseCases.Users;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Presentation.Controllers
@@ -76,6 +77,13 @@ namespace API.Presentation.Controllers
             }
 
             return Redirect($"http://localhost:4200/callback?token={googleLoginResult.Data}");
+        }
+        
+        [Authorize(Policy = "CanTestEndpoint")]
+        [HttpGet("Test")]
+        public async Task<IActionResult> TestEndPoint()
+        {
+            return Ok();
         }
         
     }

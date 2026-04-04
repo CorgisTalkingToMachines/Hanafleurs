@@ -50,6 +50,13 @@ builder.Services
         options.SignInScheme = "ExternalCookie"; // Tells Google's Handler, once the OAuth authentication succeeded, Google's claims must be stored in this cookie
     });
 
+// Authorization
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("CanTestEndpoint", policy =>
+        policy.RequireRole("Customer"));
+});
+
 // Mapster
 builder.Services.AddMapster(); // IMapper
 TypeAdapterConfig.GlobalSettings.Apply(new UserProfile());
