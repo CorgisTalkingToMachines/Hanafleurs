@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Auth } from '@features/auth/services/auth';
 import { Separator } from "app/shared/separator/separator";
 
@@ -11,7 +11,7 @@ import { Separator } from "app/shared/separator/separator";
   styleUrl: './login.scss',
 })
 export class Login {
-  constructor(private authService: Auth) {};
+  constructor(private authService: Auth, private router: Router) {};
 
   loginForm = new FormGroup({
     username: new FormControl('', { nonNullable: true }),
@@ -24,6 +24,8 @@ export class Login {
     this.authService.login(this.loginForm.getRawValue()).subscribe({
       next: (response) => {
         console.log('Connexion réussie', response);
+
+        this.router.navigate(['/home']);
       },
       error: (err) => {
         console.log('Échec de la connexion', err);

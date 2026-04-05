@@ -5,6 +5,7 @@ using API.Application.DataObjects.Results;
 using API.Application.UseCases.Users;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Presentation.Controllers
@@ -35,6 +36,18 @@ namespace API.Presentation.Controllers
         public async Task<ActionResult> LoginUser(LoginUserQuery loginUserQuery)
         {
             var result = await _loginUserUseCase.ExecuteAsync(loginUserQuery);
+
+            if (result.IsSuccess)
+            {
+                Response.Cookies.Append("jwt", result.Data, new CookieOptions
+                {
+                    HttpOnly = true,
+                    Secure = true,
+                    SameSite = SameSiteMode.Strict,
+                    Expires = DateTimeOffset.Now.AddHours(1)
+                });
+            }
+            
             return result.ToActionResult(this);
         }
 
