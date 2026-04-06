@@ -24,7 +24,6 @@ export class Login {
     this.authService.login(this.loginForm.getRawValue()).subscribe({
       next: (response) => {
         console.log('Connexion réussie', response);
-
         this.router.navigate(['/home']);
       },
       error: (err) => {
