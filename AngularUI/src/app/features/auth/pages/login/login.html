@@ -1,6 +1,23 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <input formControlName="username" type="text" placeholder="Nom d'utilisateur" />
-    <input formControlName="password" type="password" placeholder="Mot de passe" />
+<div class="login-wrapper">
+  <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form__field">
+      <label for="username">Nom d'utilisateur ou adresse</label>
+      <input class="form__interactive" id="username" formControlName="username" type="text"/>
+    </div>
 
-    <button type="submit" [disabled]="loginForm.invalid">Connexion</button>
-</form>
+    <div class="form__field">
+      <label for="password">Mot de passe</label>
+      <input class="form__interactive" id="password" formControlName="password" type="password" />
+    </div>
+
+      <button class="form__button form__interactive" type="submit" [disabled]="loginForm.invalid">Connexion</button>
+  </form>
+
+  <!-- <div class="separator">ou</div> -->
+  <hf-separator></hf-separator>
+
+  <button (click)="loginWithGoogle()">Continuer avec Google</button>
+
+  <p>Nouveau à Hanafleur? <a routerLink="/register">Créer un compte ici </a></p>
+
+</div>

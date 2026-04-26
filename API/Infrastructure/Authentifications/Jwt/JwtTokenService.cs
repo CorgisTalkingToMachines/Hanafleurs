@@ -31,7 +31,8 @@ namespace API.Infrastructure.Authentifications.Jwt
                 {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Name, user.Username)
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Role, user.Role.Value),
             }),
                 Expires = DateTime.UtcNow.AddHours(24),
                 SigningCredentials = credentials,

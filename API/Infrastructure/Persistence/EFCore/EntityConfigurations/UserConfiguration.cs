@@ -1,4 +1,5 @@
 ﻿using API.Domain.Entities;
+using API.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -14,7 +15,13 @@ namespace API.Infrastructure.Persistence.EFCore.EntityConfigurations
 
             builder
                 .HasIndex(u => u.Email)
-                .IsUnique(); 
+                .IsUnique();
+
+            builder
+                .Property(u => u.Role)
+                .HasConversion(
+                    role => role.Value,
+                    value => Role.FromString(value));
         }
     }
 }

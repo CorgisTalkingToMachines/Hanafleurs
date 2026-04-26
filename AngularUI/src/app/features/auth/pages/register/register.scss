@@ -1,0 +1,31 @@
+label, button {
+  font-weight: bold;
+}
+
+input, button {
+  height: 2rem;
+}
+
+button {
+  background-color: var(--color-primary);
+}
+
+.register-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+  max-width: 600px;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

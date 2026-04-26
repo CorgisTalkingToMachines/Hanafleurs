@@ -29,9 +29,11 @@ namespace API.Infrastructure.Persistence.Repositories.ReadRepositories
 
         public async Task<User?> FindByUsernameAsync(string username)
         {
-            return await _context.Users
+            var user = await _context.Users
                 .Where(user => user.Username == username)
                 .FirstOrDefaultAsync();
+
+            return user;
         }
     }
 }

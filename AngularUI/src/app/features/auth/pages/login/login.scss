@@ -1,0 +1,41 @@
+label, button {
+  font-weight: bold;
+}
+
+button {
+  height: 2rem;
+  background-color: var(--color-primary);
+}
+
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+  max-width: 600px;
+  gap: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.form__button {
+  width: 100%;
+  background-color: var(--color-primary);
+}
+
+.form__interactive {
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+}
