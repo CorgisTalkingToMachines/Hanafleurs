@@ -4,7 +4,6 @@ using API.Domain.Entities;
 using API.Domain.Repositories.Users;
 using API.Domain.Services;
 using MapsterMapper;
-using System.Reflection.Metadata.Ecma335;
 
 namespace API.Application.UseCases.Users
 {
@@ -13,14 +12,12 @@ namespace API.Application.UseCases.Users
         private readonly IPasswordHashingService _passwordHashingService;
         private readonly IWriteUserRepository _writeUserRepository;
         private readonly IReadUserRepository _readUserRepository;
-        private readonly UserDomainService _userDomainService;
         private readonly IMapper _mapper;
 
         public RegisterUserUseCase(IWriteUserRepository writeUserRepository, IReadUserRepository readUserRepository
-            ,UserDomainService userDomainService, IMapper mapper, IPasswordHashingService passwordHashingService)
+            , IMapper mapper, IPasswordHashingService passwordHashingService)
         {
             _writeUserRepository = writeUserRepository;
-            _userDomainService = userDomainService;
             _mapper = mapper;
             _readUserRepository = readUserRepository;
             _passwordHashingService = passwordHashingService;
