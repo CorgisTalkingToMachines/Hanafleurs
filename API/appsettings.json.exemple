@@ -12,8 +12,13 @@
   },
 
   "AuthConfiguration": {
-    "Key": "smxdgfjidsog,oi156fqs14f564f5qs15s4!dsqjdbqsdyxwcujwqzueiqzh7484981561wx3165c1wx56",
+    "Key": "secretKey",
     "Issuer": "Issuer",
     "Audience": "Audience"
+  },
+  
+  "OAuth": {
+    "ClientID": "clientID",
+    "ClientSecret": "clientSecret"
   }
 }
