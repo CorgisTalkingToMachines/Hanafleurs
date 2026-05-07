@@ -43,11 +43,8 @@ namespace API.Application.UseCases.Users
 
         private async Task<User> CreateUserFromCommand(RegisterUserCommand command)
         {
-            var user = _mapper.Map<User>(command);
-
-            user.PasswordHash = _passwordHashingService.HashPassword(command.Password);
-
-            return user;
+            var passwordHash = _passwordHashingService.HashPassword(command.Password);
+            return User.Create(command.Username, command.Email, passwordHash);
         }
     }
 }

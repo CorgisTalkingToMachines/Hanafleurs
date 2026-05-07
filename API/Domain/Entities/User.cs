@@ -1,20 +1,18 @@
-﻿using System.Runtime.CompilerServices;
-using API.Domain.ValueObjects;
+﻿using API.Domain.ValueObjects;
 
 namespace API.Domain.Entities
 {
     public class User
     {
-        public Guid Id { get; set; }
-        public string Username { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
-        public string? PasswordHash { get; set; }
-        public string? ExternalProvider  { get; set; }
-        public string? ExternalProviderId { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public bool IsActive { get; set; }
-
-        public Role Role { get; set; }
+        public Guid Id { get; init; }
+        public string Username { get; init; } = string.Empty;
+        public string Email { get; private set; } = string.Empty;
+        public string? PasswordHash { get; private set; }
+        public string? ExternalProvider  { get; init; }
+        public string? ExternalProviderId { get; init; }
+        public DateTime CreatedAt { get; init; }
+        public bool IsActive { get; private set; }
+        public Role Role { get; private set; }
 
         private User() { }
 
